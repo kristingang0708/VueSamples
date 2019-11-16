@@ -11,7 +11,9 @@
 
 <body>
     <div id="app">
-        <p>{{ sayHello() }}</p>
+        <h1 v-once>{{ title }}</h1>
+        <p>{{ sayHello() }} -<a v-bind:href="link">Google</a></p>
+        <p v-html="finishedLink"></p>        
     </div>
 </body>
 
@@ -21,10 +23,13 @@
     new Vue({
         el: '#app',
         data: {
-            title: "Hello World!!!"
+            title: 'Hello World!!!',
+            link: 'http://google.com',
+            finishedLink: '<a href="http://google.com">Google</a>'
         },
         methods: {
             sayHello: function(){
+                this.title = 'Hello!';
                 return this.title;
             }
         },
