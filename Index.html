@@ -17,7 +17,9 @@
             Coordinates: {{ X }} / {{ Y }}
             - <span v-on:mousemove.stop="">DEAD SPOT</span>
         </p>
+        <input type="text" v-on:keyup.enter="alertMe">
     </div>
+    <a href="C:/Users/Kristin/Documents/Projects/PWA/VUE/VueSamples/Exercises.html">View exercises</a>
 </body>
 
 </html>
@@ -37,6 +39,9 @@
             updateCoordinates: function (event) {
                 this.X = event.clientX;
                 this.Y = event.clientY;
+            },
+            alertMe: function(){
+                alert('Alter!');
             }
         }
     });
