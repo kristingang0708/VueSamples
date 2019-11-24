@@ -11,15 +11,11 @@
 
 <body>
     <div id="app">
-        <button v-on:click="increase(2, $event)">Click me</button>
-        <p>{{ counter }}</p>
-        <p v-on:mousemove="updateCoordinates">
-            Coordinates: {{ X }} / {{ Y }}
-            - <span v-on:mousemove.stop="">DEAD SPOT</span>
-        </p>
-        <input type="text" v-on:keyup.enter="alertMe">
-    </div>
-    <a href="C:/Users/Kristin/Documents/Projects/PWA/VUE/VueSamples/Exercises.html">View exercises</a>
+        <button v-on:click="counter++">Increase</button>
+        <button v-on:click="counter--">Decrease</button>
+        <button v-on:click="secondCounter++">Increase Second</button>
+        <p>Counter: {{ counter }} {{secondCounter}}</p>
+        <p>Result: {{ result() }} | {{ output }}</p>
 </body>
 
 </html>
@@ -29,20 +25,19 @@
         el: '#app',
         data: {
             counter: 0,
-            X: 0,
-            Y: 0
+            secondCounter: 0
         },
-        methods: {
-            increase: function (step, event) {
-                this.counter += step;
-            },
-            updateCoordinates: function (event) {
-                this.X = event.clientX;
-                this.Y = event.clientY;
-            },
-            alertMe: function(){
-                alert('Alter!');
+        computed: {
+            output: function(){
+                console.log('compted');
+                return this.counter > 5 ? 'Greater 5' :'Smaller 5';
             }
+        },
+        methods:{
+            result: function(){
+                console.log('method')
+                return this.counter > 5 ? 'Greater 5' :'Smaller 5';
+            },
         }
     });
 </script>
